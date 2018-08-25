@@ -18,7 +18,7 @@ pipeline {
    }
    stage('gate') {
      steps {
-       build 'new1 gate'
+       build 'new1gate'
      }
    }
  }
