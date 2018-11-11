@@ -1,5 +1,12 @@
 pipeline {
- agent any
+ agent {
+       node('master') {
+           sh'''
+               echo 'Hello, world!'
+           '''
+           logstashSend failBuild: true, maxLines: 1000
+       }
+ }
  stages {
    stage('checkout') {
      steps {
@@ -19,12 +26,6 @@ pipeline {
    stage('gate') {
      steps {
        build 'new1gate'
-     }
-     node('master') {
-         sh'''
-             echo 'Hello, world!'
-         '''
-         logstashSend failBuild: true, maxLines: 1000
      }
    }
  }
