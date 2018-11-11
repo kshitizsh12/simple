@@ -2,5 +2,5 @@ projectKey=kshitiz:com.kshitiz
 serverUrl=http://localhost:9000/sonar
 serverVersion=7.3.0.15553
 dashboardUrl=http://localhost:9000/sonar/dashboard?id=kshitiz%3Acom.kshitiz
-ceTaskId=AWVtEiHPLdCsMDo3VSP6
-ceTaskUrl=http://localhost:9000/sonar/api/ce/task?id=AWVtEiHPLdCsMDo3VSP6
+ceTaskId=AWcDfM5HfvuQ0mc-ybUX
+ceTaskUrl=http://localhost:9000/sonar/api/ce/task?id=AWcDfM5HfvuQ0mc-ybUX
