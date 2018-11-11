@@ -7,25 +7,6 @@ pipeline {
      }
    }
    stage('build') {
-     options {
-        timestamps {
-          logstash {
-            node('label1') {
-              sh'''
-                echo 'Hello, World!'
-              '''
-              try {
-                // do something that fails
-                sh "exit 1"
-                currentBuild.result = 'SUCCESS'
-              } catch (Exception err) {
-                currentBuild.result = 'FAILURE'
-              }
-            }
-          }
-        }
-     }
-
      steps {
        build 'new 1'
      }
@@ -40,6 +21,7 @@ pipeline {
        build 'new1gate'
      }
    }
+ logstashSend failBuild: true, maxLines: 1000
  }
 }
 
