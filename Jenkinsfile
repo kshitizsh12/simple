@@ -21,7 +21,6 @@ pipeline {
        build 'new1gate'
      }
    }
- logstashSend failBuild: true, maxLines: 1000
  }
 }
 
