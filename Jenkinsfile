@@ -5,12 +5,6 @@ pipeline {
      steps {
        git(url: 'https://github.com/kshitizsh12/Simple.git', branch: 'master', changelog: true, credentialsId: '10sharma10', poll: true)
      }
-     node('checkout') {
-         sh'''
-             echo 'Hello, world!'
-         '''
-         logstashSend failBuild: true, maxLines: 1000
-     }
    }
    stage('build') {
      steps {
@@ -25,6 +19,12 @@ pipeline {
    stage('gate') {
      steps {
        build 'new1gate'
+     }
+     node('master') {
+         sh'''
+             echo 'Hello, world!'
+         '''
+         logstashSend failBuild: true, maxLines: 1000
      }
    }
  }
