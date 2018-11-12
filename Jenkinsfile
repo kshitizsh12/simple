@@ -1,5 +1,16 @@
 pipeline {
- agent any
+ agent {
+
+      node {
+      deleteDir()
+
+      stage ‘build’
+      sh ”’#!/bin/bash
+      echo “This is the pipeline test”
+      ”’
+      logstashSend failBuild: true, maxLines: 1000
+      }
+ }
  stages {
    stage('checkout') {
      steps {
