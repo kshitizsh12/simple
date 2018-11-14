@@ -1,14 +1,5 @@
 pipeline {
- agent {
-     node {
-
-      stage ‘build’
-      sh ”’
-      echo “This is the pipeline test”
-      ”’
-      logstashSend failBuild: true, maxLines: 1000
-      }
- }
+ agent any
  stages {
    stage('checkout') {
      steps {
@@ -31,6 +22,11 @@ pipeline {
      }
    }
  }
+
+  post {
+        always {
+             logstashSend failBuild: true, maxLines: 1000
+             }
+
+   }
 }
-
-
