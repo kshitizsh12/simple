@@ -3,7 +3,7 @@ pipeline {
  stages {
    stage('checkout') {
      options {
-                     timeout(time: 1, unit: 'HOURS')
+                     timestamps()
                  }
      steps {
        git(url: 'https://github.com/kshitizsh12/Simple.git', branch: 'master', changelog: true, credentialsId: '10sharma10', poll: true)
@@ -18,11 +18,17 @@ pipeline {
      }
    }
    stage('sonarqube') {
+   options {
+                        timestamps()
+                    }
      steps {
        build 'new1 sonar'
      }
    }
    stage('gate') {
+   options {
+                        timestamps()
+                    }
      steps {
        build 'new1gate'
      }
