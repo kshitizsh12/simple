@@ -4,9 +4,12 @@ pipeline {
    stage('checkout') {
      steps {
        git(url: 'https://github.com/kshitizsh12/Simple.git', branch: 'master', changelog: true, credentialsId: '10sharma10', poll: true)
-     }
+      }
    }
    stage('build') {
+     options {
+                     timeout(time: 1, unit: 'HOURS')
+                 }
      steps {
        build 'new 1'
      }
@@ -18,6 +21,9 @@ pipeline {
    }
    stage('gate') {
      steps {
+     options {
+                     timeout(time: 1, unit: 'HOURS')
+                 }
        build 'new1gate'
      }
    }
@@ -27,6 +33,5 @@ pipeline {
         always {
              logstashSend failBuild: true, maxLines: 1000
              }
-
    }
 }
