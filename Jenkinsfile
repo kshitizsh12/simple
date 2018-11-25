@@ -5,6 +5,9 @@ pipeline {
      // this is first
      )
   }
+  parameters {
+  string(name: 'kshitiz', description: 'A user that triggers the pipeline')
+  }
   stages {
     stage('checkout') {
       steps {
@@ -13,10 +16,7 @@ pipeline {
     }
     stage('build') {
       options {
-                      logstash(
-
-                              currentBuild.result = 'SUCCESS'
-                      )
+                      logstash()
                   }
       steps {
         build 'new 1'
