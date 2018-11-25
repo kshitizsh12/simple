@@ -11,7 +11,7 @@ pipeline {
    }
    stage('build') {
      options {
-                     timestamp()
+                     timestamps()
                  }
      steps {
        build 'new 1'
