@@ -1,5 +1,10 @@
 pipeline {
  agent any
+  options {
+     timestamps(
+     // this is first
+     )
+  }
   stages {
     stage('checkout') {
       steps {
@@ -9,7 +14,6 @@ pipeline {
     stage('build') {
       options {
                       logstash(
-                            echo 'Hello, World!'
                       )
                   }
       steps {
