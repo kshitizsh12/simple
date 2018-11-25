@@ -8,7 +8,13 @@ pipeline {
     }
     stage('build') {
       options {
-                      logstash()
+                      logstash(
+                      node('master') {
+                            sh'''
+                            echo 'Hello, World!'
+                            '''
+                          }
+                      )
                   }
       steps {
         build 'new 1'
