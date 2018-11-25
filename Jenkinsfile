@@ -1,9 +1,7 @@
 pipeline {
  agent any
   options {
-     timestamps(
-     // this is first
-     )
+     logstash()
   }
   stages {
     stage('checkout') {
