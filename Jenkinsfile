@@ -7,9 +7,6 @@ pipeline {
       }
    }
    stage('build') {
-     options {
-                     timeout(time: 1, unit: 'HOURS')
-                 }
      steps {
        build 'new 1'
      }
@@ -21,9 +18,6 @@ pipeline {
    }
    stage('gate') {
      steps {
-     options {
-                     timeout(time: 1, unit: 'HOURS')
-                 }
        build 'new1gate'
      }
    }
@@ -33,5 +27,6 @@ pipeline {
         always {
              logstashSend failBuild: true, maxLines: 1000
              }
+
    }
 }
