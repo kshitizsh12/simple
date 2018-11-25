@@ -16,7 +16,6 @@ pipeline {
                       logstash(
 
                               currentBuild.result = 'SUCCESS'
-
                       )
                   }
       steps {
