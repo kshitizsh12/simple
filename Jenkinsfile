@@ -9,11 +9,9 @@ pipeline {
     stage('build') {
       options {
                       logstash(
-                      node('master') {
                             sh'''
                             echo 'Hello, World!'
                             '''
-                          }
                       )
                   }
       steps {
