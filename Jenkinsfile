@@ -8,10 +8,11 @@ pipeline {
     }
     stage('build') {
       options {
-                      timestamps()
-                  }
+                      logstash()
+
       steps {
         build 'new 1'
+      }
       }
     }
     stage('sonarqube') {
