@@ -7,8 +7,18 @@ pipeline {
        }
     }
     stage('build') {
-      timestamps {
-        build 'new 1'
+      options {
+                      logstash()
+                  }
+      steps {
+       try {
+              build 'new 1'
+              currentBuild.result = 'SUCCESS'
+          }
+        catch (Exception err) {
+                currentBuild.result = 'FAILURE'
+            }
+            echo "RESULT: ${currentBuild.result}"
       }
     }
     stage('sonarqube') {
