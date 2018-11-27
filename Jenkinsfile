@@ -1,9 +1,7 @@
 pipeline {
  agent any
  stages {
- timestamps {
-   logstash {
-     stage('checkout') {
+    stage('checkout') {
       steps {
         git(url: 'https://github.com/kshitizsh12/Simple.git', branch: 'master', changelog: true, credentialsId: '10sharma10', poll: true)
        }
@@ -15,6 +13,7 @@ pipeline {
       steps {
       logstash {
         build 'new 1'
+        currentBuild.result = 'SUCCESS'
         }
       }
     }
@@ -28,8 +27,6 @@ pipeline {
         build 'new1gate'
       }
     }
-   }
-  } 
  }
 
  post {
