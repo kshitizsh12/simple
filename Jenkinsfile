@@ -9,16 +9,23 @@ pipeline {
     stage('build') {
       steps {
       logstash {
-        build 'new 1'
-        echo 'project build'
+                node {
+                    try { 
+                            build 'new 1'
+                            echo 'project build'
+                            currentBuild.result = 'SUCCESS'
+                         } catch (Exception err) {
+                            currentBuild.result = 'FAILURE'
+                           }
+                    echo "RESULT: ${currentBuild.result}"
         }
       }
     }
     stage('sonarqube') {
       steps {
       logstash {
-        build 'new1 sonar'
-        echo 'sonarqube'
+              build 'new1 sonar'
+              echo 'sonarqube'
        }
       }
     }
@@ -39,3 +46,5 @@ pipeline {
 
   }
 }
+
+
