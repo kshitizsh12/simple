@@ -9,7 +9,7 @@ pipeline {
     stage('build') {
       steps {
       logstash {
-                node('build') {
+                node('master') {
                                 build 'new 1'
                                }
         }
