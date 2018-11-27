@@ -10,7 +10,7 @@ pipeline {
       options {
                       logstash()
                   }
-      timestamps {
+      steps {
       logstash {
         build 'new 1'
         }
@@ -24,6 +24,7 @@ pipeline {
     stage('gate') {
       steps {
         build 'new1gate'
+        echo 'hello'
       }
     }
  }
