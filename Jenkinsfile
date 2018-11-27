@@ -16,14 +16,18 @@ pipeline {
     }
     stage('sonarqube') {
       steps {
+      logstash {
         build 'new1 sonar'
         echo 'sonarqube'
+       }
       }
     }
     stage('gate') {
       steps {
+      logstash {
         build 'new1gate'
         echo 'sonar gate'
+       }
       }
     }
  }
