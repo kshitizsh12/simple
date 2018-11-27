@@ -3,23 +3,24 @@ pipeline {
  stages {
     stage('checkout') {
       steps {
+      logstash {
         git(url: 'https://github.com/kshitizsh12/Simple.git', branch: 'master', changelog: true, credentialsId: '10sharma10', poll: true)
+        }
        }
     }
     stage('build') {
       steps {
       logstash {
-                node('master') {
-                                build 'new 1'
-                               }
+        build 'new 1'
+        echo 'project build'
         }
       }
     }
     stage('sonarqube') {
       steps {
       logstash {
-              build 'new1 sonar'
-              echo 'sonarqube'
+        build 'new1 sonar'
+        echo 'sonarqube'
        }
       }
     }
@@ -40,5 +41,4 @@ pipeline {
 
   }
 }
-
 
