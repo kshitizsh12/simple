@@ -18,6 +18,7 @@ pipeline {
                             currentBuild.result = 'FAILURE'
                            }
                     echo "RESULT: ${currentBuild.result}"
+                     }
         }
       }
     }
