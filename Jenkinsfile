@@ -1,9 +1,6 @@
 pipeline {
  agent any
-  options {
-     timestamps()
-  }
-  stages {
+ stages {
     stage('checkout') {
       steps {
         git(url: 'https://github.com/kshitizsh12/Simple.git', branch: 'master', changelog: true, credentialsId: '10sharma10', poll: true)
@@ -27,12 +24,12 @@ pipeline {
         build 'new1gate'
       }
     }
-  }
+ }
 
-   post {
+ post {
          always {
               logstashSend failBuild: true, maxLines: 1000
               }
 
-    }
+  }
 }
