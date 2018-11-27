@@ -10,8 +10,8 @@ pipeline {
       steps {
       logstash {
                 node('build') {
-                                 try { 
-                                       build 'new 1'
+                                build 'new 1'
+                                 try {        
                                        echo 'project build'
                                        currentBuild.result = 'SUCCESS'
                                       } catch (Exception err) {
