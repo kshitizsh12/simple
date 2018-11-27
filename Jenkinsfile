@@ -1,12 +1,7 @@
 pipeline {
  agent any
   options {
-     timestamps(
-     // this is first
-     )
-  }
-  parameters {
-  string(name: 'kshitiz', description: 'A user that triggers the pipeline')
+     timestamps()
   }
   stages {
     stage('checkout') {
