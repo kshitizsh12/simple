@@ -9,16 +9,16 @@ pipeline {
     stage('build') {
       steps {
       logstash {
-                node {
-                    try { 
-                            build 'new 1'
-                            echo 'project build'
-                            currentBuild.result = 'SUCCESS'
-                         } catch (Exception err) {
-                            currentBuild.result = 'FAILURE'
-                           }
-                    echo "RESULT: ${currentBuild.result}"
-                     }
+                node('build') {
+                                 try { 
+                                       build 'new 1'
+                                       echo 'project build'
+                                       currentBuild.result = 'SUCCESS'
+                                      } catch (Exception err) {
+                                      currentBuild.result = 'FAILURE'
+                                      }
+                                   echo "RESULT: ${currentBuild.result}"
+                               }
         }
       }
     }
