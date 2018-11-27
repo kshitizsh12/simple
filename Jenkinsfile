@@ -16,7 +16,7 @@ pipeline {
     }
     stage('build') {
       options {
-                      logstash()
+                      timestamps()
                   }
       steps {
         build 'new 1'
@@ -34,10 +34,10 @@ pipeline {
     }
   }
 
- post {
+   post {
          always {
               logstashSend failBuild: true, maxLines: 1000
               }
 
-   }
+    }
 }
