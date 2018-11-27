@@ -10,10 +10,9 @@ pipeline {
       options {
                       logstash()
                   }
-      steps {
+      timestamps {
       logstash {
         build 'new 1'
-        currentBuild.result = 'SUCCESS'
         }
       }
     }
