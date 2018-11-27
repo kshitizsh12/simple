@@ -11,14 +11,9 @@ pipeline {
                       logstash()
                   }
       steps {
-       try {
-              build 'new 1'
-              currentBuild.result = 'SUCCESS'
-          }
-        catch (Exception err) {
-                currentBuild.result = 'FAILURE'
-            }
-            echo "RESULT: ${currentBuild.result}"
+      logstash {
+        build 'new 1'
+        }
       }
     }
     stage('sonarqube') {
