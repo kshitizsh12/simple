@@ -7,24 +7,23 @@ pipeline {
        }
     }
     stage('build') {
-      options {
-                      logstash()
-                  }
       steps {
       logstash {
         build 'new 1'
+        echo 'project build'
         }
       }
     }
     stage('sonarqube') {
       steps {
         build 'new1 sonar'
+        echo 'sonarqube'
       }
     }
     stage('gate') {
       steps {
         build 'new1gate'
-        echo 'hello'
+        echo 'sonar gate'
       }
     }
  }
