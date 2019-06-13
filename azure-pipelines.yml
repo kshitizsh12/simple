@@ -16,15 +16,15 @@ steps:
     scannerMode: 'Other'
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'integration-test'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'latest'
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        testRunTitle: 'Test'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        sonarQubeRunAnalysis: true
+        sqMavenPluginVersionChoice: 'latest'
 - task: SonarQubeAnalyze@4
 - task: SonarQubePublish@4
   inputs:
